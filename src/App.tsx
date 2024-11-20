@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import "./App.css"
+import DisplayUsers from './components/DisplayUsers';
+import AddUser from './components/AddUser';
+import { Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from './store/store';
+import { handleShow } from './store/Slicer/userSlicer';
+
 
 function App() {
+
+  const dispatch = useDispatch<AppDispatch>();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Button onClick={() => dispatch(handleShow())} >+</Button>
+      <DisplayUsers />
+      <AddUser />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
